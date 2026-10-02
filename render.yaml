@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: imagen-studio
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+    disk:
+      name: imagen-data
+      mountPath: /data
+      sizeGB: 5
